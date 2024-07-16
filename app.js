@@ -31,6 +31,7 @@ app.all("/", async (req, res) => {
     // response.headers.forEach((value, name) => {
     //   res.setHeader(name, value);
     // });
+    console.log(response.status, responseBody);
     res.status(response.status).send(responseBody);
   } catch (error) {
     res.status(500).send(error.message);
