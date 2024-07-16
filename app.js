@@ -27,10 +27,11 @@ app.all("/", async (req, res) => {
     };
 
     const response = await fetch(targetUrl, fetchOptions);
-    const responseBody = await response.text();
 
     res.setHeader('content-type', response.headers.get('content-type'));
     console.log(response.headers.get('content-type'));
+    const responseBody = await response.text();
+
     res.status(response.status).send(responseBody);
   } catch (error) {
     res.status(500).send(error.message);
