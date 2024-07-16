@@ -12,7 +12,7 @@ app.use(
 );
 
 
-app.all("/cors", async (req, res) => {
+app.all("/", async (req, res) => {
   const targetUrl = req.query.url;
 
   if (!targetUrl) {
@@ -28,9 +28,9 @@ app.all("/cors", async (req, res) => {
 
     const response = await fetch(targetUrl, fetchOptions);
     const responseBody = await response.text();
-    response.headers.forEach((value, name) => {
-      res.setHeader(name, value);
-    });
+    // response.headers.forEach((value, name) => {
+    //   res.setHeader(name, value);
+    // });
     res.status(response.status).send(responseBody);
   } catch (error) {
     res.status(500).send(error.message);
