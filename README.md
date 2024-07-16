@@ -14,7 +14,7 @@ cors:
 Add this to your dispatcher config:
 
 ```elixir
-  match "/communica/*path", %{ layer: :api_services, reverse_host: ["harvester" | _rest] }  do
+  match "/communica/*path"  do
     forward conn, path, "http://cors/"
   end
 ```
